@@ -1,16 +1,53 @@
 /* Reglas CSS */
-/*Tipo etiqueta*/
-body,h1,h2,h3,h4,h5,h6{
+/*
+regla {
+    propiedad: valor;
+}
+*/
+
+/* Tipo etiqueta */
+body,h1,h2,h3,h4,h5,h6 {
     margin: 0;
     padding: 0;
     border: 0;
 }
-/*Tipo ID*/
-#encabezado{
+
+/* Tipo ID */
+#encabezado {
     background-color: #93485E;
     padding: 10px;
-    color: #000;
+    color: #ffffff;
     /*color: rgb(255, 255, 0);
-    color: rgb(255, 255, 0,.5);
+    color: rgba(255, 255, 0,.5);
     color: white;*/
+}
+
+#login-form {
+    width: 370px;
+    margin: 0 auto;
+    padding: 15px;
+    /*
+    margin: 10px; aplica a los 4 lados
+    margin: 10px 15px; aplica arriba y abajo 10px, izquierda y derecha 15px
+    margin: 5px 10px 15px; aplica 5px arriba, 10px izquierda y derecha, 15px abajo
+    margin: 1px 2px 3px 4px; aplica 1px arriba, 2px derecha, 3px abajo, 4px izquierda
+    */
+}
+
+#login-form .input {
+    width: 100%;
+    font-size: 1em;
+}
+
+#login-form .control {
+    margin-bottom: 20px;
+}
+
+#login-form .control label {
+    font-size: 1.2em;
+}
+
+/* Tipo clase */
+.negrita {
+    font-weight: bold;
 }
