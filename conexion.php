@@ -16,26 +16,18 @@ class Conexion extends mysqli {
             'database_passwd'=>'toor',
             'database_port'=>'3306'
         ];
-        $this->conectar();
+        parent::__construct($this->database_host,$this->database_user,$this->database_passwd,$this->database_name,$this->database_port);
     }
 
-    public function __construct1($host,$name,$user,$passwd,$port) {
+    public function __construct1($host,$user,$passwd,$name,$port) {
         $this->datos = [
             'database_host'=>$host,
-            'database_name'=>$name,
             'database_user'=>$user,
             'database_passwd'=>$passwd,
+            'database_name'=>$name,
             'database_port'=>$port
         ];
-        $this->conectar();
-    }
-
-    public function conectar() {
-    $this->connect( $this->database_host,
-                    $this->database_user,
-                    $this->database_passwd,
-                    $this->database_name,
-                    $this->database_port);
+        parent::__construct($host,$user,$passwd,$name,$port);
     }
 
     public function __get($keyname) {
@@ -49,9 +41,9 @@ class Conexion extends mysqli {
     }
 }
 
-$objeto = new Conexion();
+// $objeto = new Conexion();
 
-$rst = $objeto->query('select * from usuarios');
-$r = $rst->fetch_assoc();
+// $rst = $objeto->query('select * from usuarios');
+// $r = $rst->fetch_assoc();
 
-var_dump($r);
+// var_dump($r);
