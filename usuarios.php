@@ -23,13 +23,28 @@ class Usuario {
                 $usuario->apellidos = $r['apellidos'];
                 $usuario->email = $r['email'];
 
-                return $usuario;
+                $datos = [
+                    'data' => [
+                        'login' => true,
+                        'usuario' => $usuario->datos
+                    ]
+                ];
             } else {
-                return null;
+                $datos = [
+                    'data' => [
+                        'login' => false
+                    ]
+                ];
             }
         } else {
-            return false;
+            $datos = [
+                    'data' => [
+                        'login' => 'fail'
+                    ]
+                ];
         }
+        
+        return json_encode($datos);
     }
 
     public function __get($campo) {
@@ -43,5 +58,5 @@ class Usuario {
     }
 }
 
-$u = Usuario::login('bidkar','123');
-var_dump($u);
+// $u = Usuario::login('bidkar','1234');
+// var_dump($u);
