@@ -10,6 +10,7 @@ class Usuario {
     ];
 
     public static function login($user, $passwd) {
+        $datos = ['data' => [ 'login' => '' ]];
         $cnn = new Conexion();
         $sql = sprintf("select * from usuarios where username='%s' and password='%s'",$user,md5($passwd));
         $rst = $cnn->query($sql);
@@ -23,25 +24,13 @@ class Usuario {
                 $usuario->apellidos = $r['apellidos'];
                 $usuario->email = $r['email'];
 
-                $datos = [
-                    'data' => [
-                        'login' => true,
-                        'usuario' => $usuario->datos
-                    ]
-                ];
+                $datos['data']['login'] = true;
+                $datos['data']['usuario'] = $usuario->datos;
             } else {
-                $datos = [
-                    'data' => [
-                        'login' => false
-                    ]
-                ];
+                $datos['data']['login'] = false;
             }
         } else {
-            $datos = [
-                    'data' => [
-                        'login' => 'fail'
-                    ]
-                ];
+            $datos['data']['login'] = 'fail';
         }
         
         return json_encode($datos);
@@ -58,5 +47,5 @@ class Usuario {
     }
 }
 
-// $u = Usuario::login('bidkar','1234');
-// var_dump($u);
+$u = Usuario::login('bidkar','123');
+var_dump($u);
