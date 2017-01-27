@@ -1,5 +1,4 @@
 <?php
-require 'conexion.php';
 class Usuario {
     private $datos = [
         'id'        => '',
@@ -11,9 +10,11 @@ class Usuario {
 
     public static function login($user, $passwd) {
         $datos = ['data' => [ 'login' => '' ]];
+        // $datos = array('data' => array( 'login' => '' ));
         $cnn = new Conexion();
         $sql = sprintf("select * from usuarios where username='%s' and password='%s'",$user,md5($passwd));
         $rst = $cnn->query($sql);
+        $cnn->close();
         if ($rst) {
             if ($rst->num_rows == 1) {
                 $r = $rst->fetch_assoc();
@@ -33,7 +34,7 @@ class Usuario {
             $datos['data']['login'] = 'fail';
         }
         
-        return json_encode($datos);
+        return json_encode($datos, JSON_PRETTY_PRINT);
     }
 
     public function __get($campo) {
@@ -47,5 +48,5 @@ class Usuario {
     }
 }
 
-$u = Usuario::login('bidkar','123');
-var_dump($u);
+// $u = Usuario::login('bidkar','123');
+// var_dump($u);
