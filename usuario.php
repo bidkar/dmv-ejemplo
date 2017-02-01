@@ -13,7 +13,7 @@ class Usuario {
         // $datos = array('data' => array( 'login' => '' ));
         $cnn = new Conexion();
         $sql = sprintf("select * from usuarios where username='%s' and password='%s'",$user,md5($passwd));
-        $rst = $cnn->query($sql);
+        $rst = $cnn->query($sql); // mysqli_result || false
         $cnn->close();
         if ($rst) {
             if ($rst->num_rows == 1) {
