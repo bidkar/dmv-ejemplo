@@ -36,6 +36,18 @@ body {
     margin: 5px 10px 15px; aplica 5px arriba, 10px izquierda y derecha, 15px abajo
     margin: 1px 2px 3px 4px; aplica 1px arriba, 2px derecha, 3px abajo, 4px izquierda
     */
+}
+#profile-form {
+    width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+}
+#profile-form * {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.form {
     background-color: white;
     border: 1px solid lightgray;
     border-radius: 5px;
@@ -88,4 +100,16 @@ body {
 
 .text-center {
     text-align: center;
+}
+
+.error {
+    color: red;
+    background-color: #ffcccc;
+    border: 1px solid #ff8080;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.oculto {
+    display: none;
 }
