@@ -27,6 +27,12 @@ class Usuario {
 
                 $datos['data']['login'] = true;
                 $datos['data']['usuario'] = $usuario->datos;
+                
+                if (!$_SESSION['user']) {
+                    $token = md5($usuario->username.date());
+                    $datos['data']['token'] = $token;
+                    $_SESSION['user'] = $datos;
+                }
             } else {
                 $datos['data']['login'] = false;
             }

@@ -2,13 +2,13 @@ function login(usuario, passwd) {
     $.post("login.php", { txtusuario:usuario, txtpassword:passwd }, function(response) {
         var acceso = response.data.login;
         if (acceso == true) {
-            var usuario = response.data.usuario;
-            sessionStorage.userid = usuario.id;
-            sessionStorage.username = usuario.username;
-            sessionStorage.nombre = usuario.nombre;
-            sessionStorage.apellidos = usuario.apellidos;
-            sessionStorage.email = usuario.email;
-            console.log(usuario);
+            // var usuario = response.data.usuario;
+            // sessionStorage.userid = usuario.id;
+            // sessionStorage.username = usuario.username;
+            // sessionStorage.nombre = usuario.nombre;
+            // sessionStorage.apellidos = usuario.apellidos;
+            // sessionStorage.email = usuario.email;
+            // console.log(usuario);
         } else if (acceso == false) {
             $('#login-form-msg').html('Usuario o contraseña incorrecta');
             $('#login-form-msg').removeClass('oculto');
@@ -23,6 +23,14 @@ function login(usuario, passwd) {
 }
 
 $(document).ready(function() {
+
+    $.post("login.php", function(response) {
+        // verificar sesion
+        if(typeof response.data.token !== 'undefined') {
+            window.location.href = 'perfil.html';
+        }
+    });
+
     $('#login-button').click(function(event) {
         event.preventDefault();
         var usuario = $('#txtusuario').val();
